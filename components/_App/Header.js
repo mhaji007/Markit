@@ -1,14 +1,21 @@
 import { Menu, Container, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
+import {useRouter} from 'next/router';
 
 function Header() {
+  const router = useRouter();
+
   const user = true;
+
+  function isActive (route) {
+    return route === router.pathname;
+  }
 
   return (
     <Menu fluid id="menu" inverted>
       <Container text>
         <Link href="/">
-          <Menu.Item header>
+          <Menu.Item header active={isActive('/')}>
             <Image
               size="mini"
               src="/static/logo.svg"
@@ -19,7 +26,7 @@ function Header() {
         </Link>
 
         <Link href="/cart">
-          <Menu.Item header>
+          <Menu.Item header active={isActive('/cart')}>
             <Icon name="cart" size="large" />
             Cart
           </Menu.Item>
@@ -27,7 +34,7 @@ function Header() {
 
         {user && (
           <Link href="/create">
-            <Menu.Item header>
+            <Menu.Item header active={isActive('/create')}>
               <Icon name="add square" size="large" />
               Create
             </Menu.Item>
@@ -38,7 +45,7 @@ function Header() {
           <>
             <Link href="/account">
               <Menu.Item header>
-                <Icon name="user" size="large" />
+                <Icon name="user" size="large" active={isActive('/account')} />
                 Account
               </Menu.Item>
             </Link>
@@ -51,7 +58,7 @@ function Header() {
         ) : (
           <>
             <Link href="/login">
-              <Menu.Item header>
+              <Menu.Item header active={isActive('/login')}>
                 <Icon name="sign in" size="large" />
                 Login
               </Menu.Item>
@@ -59,7 +66,7 @@ function Header() {
 
             <Link href="/signup">
               <Menu.Item header>
-                <Icon name="signup" size="large" />
+                <Icon name="signup" size="large" active={isActive('/signup')} />
                 Signup
               </Menu.Item>
             </Link>
