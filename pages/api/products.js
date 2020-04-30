@@ -1,5 +1,8 @@
-import products from '../../static/products.json'
+import products from "../../static/products.json";
+import connectDb from "../../utils/connectDb";
 
-export default (req,res) => {
-    res.status(200).json(products);
-}
+connectDb();
+
+export default (req, res) => {
+  res.status(200).json(products);
+};
