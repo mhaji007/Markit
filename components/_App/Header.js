@@ -1,6 +1,11 @@
 import { Menu, Container, Image, Icon } from "semantic-ui-react";
 import Link from "next/link";
-import {useRouter} from 'next/router';
+import Router, { useRouter } from "next/router";
+import NProgress from "nprogress";
+
+Router.onRouteChangeStart = () => NProgress.start();
+Router.onRouteChangeComplete = () => NProgress.done();
+Router.onRouteChangeError = () => NProgress.done();
 
 function Header() {
   const router = useRouter();
@@ -44,8 +49,8 @@ function Header() {
         {user ? (
           <>
             <Link href="/account">
-              <Menu.Item header>
-                <Icon name="user" size="large" active={isActive('/account')} />
+              <Menu.Item header active={isActive('/account')}>
+                <Icon name="user" size="large"  />
                 Account
               </Menu.Item>
             </Link>
@@ -65,8 +70,8 @@ function Header() {
             </Link>
 
             <Link href="/signup">
-              <Menu.Item header>
-                <Icon name="signup" size="large" active={isActive('/signup')} />
+              <Menu.Item header active={isActive('/signup')}>
+                <Icon name="signup" size="large" />
                 Signup
               </Menu.Item>
             </Link>
