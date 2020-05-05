@@ -4,6 +4,7 @@ import { parseCookies, destroyCookie } from "nookies";
 import { redirectUser } from "../utils/auth";
 import baseUrl from "../utils/baseUrl";
 import axios from "axios";
+import Router from 'next/router';
 
 
 // Executed on the server before anything else and
@@ -50,6 +51,17 @@ class MyApp extends App {
     }
 
     return { pageProps };
+  }
+
+  ComponentDidMount(){
+    window.addEventListener('storage', this.syncLogout)
+  }
+
+  syncLogout = (event) =>{
+    if  (event.key === 'logout') {
+      console.log("logged out of storage");
+      Router.push('/login');
+    }
   }
 
   render() {
