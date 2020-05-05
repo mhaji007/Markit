@@ -7,9 +7,11 @@ export function handleLogin(token) {
 }
 
 export function redirectUser(ctx, location) {
+  // If on server
   if (ctx.req) {
     ctx.res.writeHead(302, { Location: location });
     ctx.res.end();
+  // If on client
   } else {
     Router.push(location);
   }
