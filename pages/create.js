@@ -48,7 +48,7 @@ function CreateProduct() {
     data.append("file", product.media);
     data.append("upload_preset", "Markit");
     data.append("cloud_name", "dtixbjivj");
-    const response = await axios.post(process.env.CLOUDINARY_URL, data);
+    const response = await axios.post("https://api.cloudinary.com/v1_1/dtixbjivj/image/upload", data);
     const mediaUrl = response.data.url;
     return mediaUrl;
   }
