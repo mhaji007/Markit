@@ -14,7 +14,7 @@ async function connectDb() {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
-  console.log("DB Connected");
+  //console.log("DB Connected");
   // Connect Mongo DB/ Mongo Atlas to a serverless backend application (.e.g., AWS lamda)
   connection.isConnected = db.connections[0].readyState;
 }
