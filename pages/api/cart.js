@@ -42,8 +42,10 @@ async function handleGetRequest(req, res) {
     );
     const cart = await Cart.findOne({ user: userId }).populate({
       path: "products.product",
-      model: "Product"
-    });
+    
+      model: "Product",
+    
+      model: Product });
     res.status(200).json(cart.products);
   } catch (error) {
     console.error(error);
