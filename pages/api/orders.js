@@ -1,9 +1,15 @@
 import Order from "../../models/Order";
 import jwt from "jsonwebtoken";
 import connectDb from "../../utils/connectDb";
+import Product from '../../models/Product';
 
-try {connectDb();}
-catch(err) {console.log(err.message);}
+(async () => {
+    try {
+      await connectDb()
+    } catch (err) {
+      console.log('error: ' + err)
+    }
+  })()
 
 export default async (req, res) => {
   try {

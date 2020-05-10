@@ -2,9 +2,15 @@ import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import Cart from "../../models/Cart";
 import connectDb from "../../utils/connectDb";
+import Product from '../../models/Product';
 
-try {connectDb();}
-catch(err) {console.log(err.message);}
+(async () => {
+  try {
+    await connectDb()
+  } catch (err) {
+    console.log('error: ' + err)
+  }
+})()
 
 const { ObjectId } = mongoose.Types;
 

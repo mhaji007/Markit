@@ -1,8 +1,13 @@
 import User from "../../models/User";
 import jwt from "jsonwebtoken";
 
-try {connectDb();}
-catch(err) {console.log(err.message);}
+(async () => {
+  try {
+    await connectDb()
+  } catch (err) {
+    console.log('error: ' + err)
+  }
+})()
 
 export default async (req, res) => {
   try {

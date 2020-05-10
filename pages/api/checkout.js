@@ -4,9 +4,15 @@ import jwt from "jsonwebtoken";
 import Cart from "../../models/Cart";
 import Order from "../../models/Order";
 import calculateCartTotal from "../../utils/calculateCartTotal";
+import Product from '../../models/Product';
 
-try {connectDb();}
-catch(err) {console.log(err.message);}
+(async () => {
+  try {
+    await connectDb()
+  } catch (err) {
+    console.log('error: ' + err)
+  }
+})()
 
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 

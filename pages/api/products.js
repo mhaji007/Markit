@@ -2,8 +2,13 @@
 import Product from "../../models/Product";
 import connectDb from "../../utils/connectDb";
 
-try {connectDb();}
-catch(err) {console.log(err.message);}
+(async () => {
+  try {
+    await connectDb()
+  } catch (err) {
+    console.log('error: ' + err)
+  }
+})()
 
 export default async (req, res) => {
   const { page, size } = req.query;
