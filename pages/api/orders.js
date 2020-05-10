@@ -2,7 +2,8 @@ import Order from "../../models/Order";
 import jwt from "jsonwebtoken";
 import connectDb from "../../utils/connectDb";
 
-connectDb();
+try {connectDb();}
+catch(err) {console.log(err.message);}
 
 export default async (req, res) => {
   try {

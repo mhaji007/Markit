@@ -3,7 +3,8 @@ import Cart from "../../models/Cart";
 import connectDb from "../../utils/connectDb";
 import shortid from "shortid";
 
-connectDb();
+try {connectDb();}
+catch(err) {console.log(err.message);}
 
 export default async (req, res) => {
   switch (req.method) {
