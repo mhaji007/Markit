@@ -28,7 +28,7 @@ export default async (req, res) => {
     // 2) Find cart based on user id, populate it
     const cart = await Cart.findOne({ user: userId }).populate({
       path: "products.product",
-      model: "Product"
+      model: Product
     });
     // 3) Calculate cart totals again from cart products
     const { cartTotal, stripeTotal } = calculateCartTotal(cart.products);
